@@ -1,0 +1,214 @@
+@use "./base.scss";
+
+// 丽泽讲会 - AI 技术专栏主题（极客蓝 + 深空灰蓝）
+// 保持 2.5D 风格，营造科技感
+
+// AI 科技主题颜色变量
+$geek-blue: #0070f3;        // 极客蓝 - 主要强调色
+$space-gray-blue: #1a202c;  // 深空灰蓝 - 主要文字色
+$tech-blue-light: #3291ff;   // 浅科技蓝
+$tech-blue-lighter: #7dd3fc; // 更浅的科技蓝
+$dark-bg: #0a0e27;           // 深色背景
+
+// 2.5D 风格的阴影和边框（科技感）
+@mixin shadow-2d5-tech {
+  box-shadow: 
+    0 4px 6px rgba(0, 112, 243, 0.08),
+    0 2px 4px rgba(0, 112, 243, 0.06),
+    0 0 0 1px rgba(0, 112, 243, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(0, 112, 243, 0.03); // 微妙的科技感光晕
+}
+
+@mixin shadow-2d5-tech-hover {
+  box-shadow: 
+    0 8px 16px rgba(0, 112, 243, 0.12),
+    0 4px 8px rgba(0, 112, 243, 0.08),
+    0 0 0 1px rgba(0, 112, 243, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 30px rgba(0, 112, 243, 0.08); // 增强的光晕效果
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// 应用 2.5D 科技风格到主要内容区域
+main {
+  .page {
+    @include shadow-2d5-tech;
+    border-radius: 12px;
+    background: var(--light);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 112, 243, 0.1);
+    
+    &:hover {
+      @include shadow-2d5-tech-hover;
+      border-color: rgba(0, 112, 243, 0.2);
+    }
+  }
+}
+
+// 侧边栏和导航的 2.5D 科技效果
+.sidebar {
+  @include shadow-2d5-tech;
+  border-radius: 8px;
+  background: var(--light);
+  border: 1px solid rgba(0, 112, 243, 0.08);
+}
+
+// 卡片和链接的 2.5D 科技效果
+a.internal,
+a.external {
+  transition: all 0.2s ease;
+  color: $geek-blue;
+  
+  &:hover {
+    @include shadow-2d5-tech-hover;
+    border-radius: 4px;
+    color: $tech-blue-light;
+  }
+}
+
+// 按钮的 2.5D 科技效果
+button,
+.btn {
+  @include shadow-2d5-tech;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, $geek-blue 0%, $tech-blue-light 100%);
+  color: white;
+  
+  &:hover {
+    @include shadow-2d5-tech-hover;
+    background: linear-gradient(135deg, $tech-blue-light 0%, $geek-blue 100%);
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 
+      0 2px 4px rgba(0, 112, 243, 0.1),
+      0 1px 2px rgba(0, 112, 243, 0.06);
+  }
+}
+
+// 搜索框的 2.5D 科技效果
+.search {
+  input {
+    @include shadow-2d5-tech;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 112, 243, 0.2);
+    
+    &:focus {
+      @include shadow-2d5-tech-hover;
+      outline: none;
+      border-color: $geek-blue;
+      box-shadow: 
+        0 8px 16px rgba(0, 112, 243, 0.12),
+        0 0 0 3px rgba(0, 112, 243, 0.1);
+    }
+  }
+}
+
+// 代码块的 2.5D 科技效果
+pre,
+code {
+  @include shadow-2d5-tech;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 112, 243, 0.1);
+  background: linear-gradient(135deg, rgba(0, 112, 243, 0.02) 0%, rgba(0, 112, 243, 0.05) 100%);
+}
+
+// 表格的 2.5D 科技效果
+table {
+  @include shadow-2d5-tech;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 112, 243, 0.1);
+}
+
+// 强调色使用极客蓝
+strong,
+b {
+  color: $geek-blue;
+  font-weight: 600;
+}
+
+// 链接颜色 - 科技蓝
+a {
+  color: $geek-blue;
+  
+  &:hover {
+    color: $tech-blue-light;
+    text-shadow: 0 0 8px rgba(0, 112, 243, 0.3);
+  }
+}
+
+// 标题使用深空灰蓝，强调使用极客蓝
+h1, h2, h3, h4, h5, h6 {
+  color: $space-gray-blue;
+  
+  a {
+    color: $space-gray-blue;
+    
+    &:hover {
+      color: $geek-blue;
+    }
+  }
+}
+
+// 滚动条样式 - 科技感
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lightgray);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, $geek-blue 0%, $tech-blue-light 100%);
+  border-radius: 5px;
+  @include shadow-2d5-tech;
+  
+  &:hover {
+    background: linear-gradient(135deg, $tech-blue-light 0%, $geek-blue 100%);
+  }
+}
+
+// AI 技术专栏特有的细节增强
+.page-title {
+  background: linear-gradient(135deg, $space-gray-blue 0%, $geek-blue 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// 标签的科技感样式
+.tag {
+  background: rgba(0, 112, 243, 0.1);
+  border: 1px solid rgba(0, 112, 243, 0.2);
+  color: $geek-blue;
+  @include shadow-2d5-tech;
+  
+  &:hover {
+    @include shadow-2d5-tech-hover;
+    background: rgba(0, 112, 243, 0.15);
+  }
+}
+
+// 引用块的科技感样式
+blockquote {
+  border-left: 3px solid $geek-blue;
+  background: rgba(0, 112, 243, 0.05);
+  @include shadow-2d5-tech;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+}
+
+// 选择文本的科技感高亮
+::selection {
+  background: rgba(0, 112, 243, 0.3);
+  color: white;
+}
